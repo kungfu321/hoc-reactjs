@@ -1,13 +1,41 @@
-import React from 'react';
-import './App.css';
-import Author from './Author';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <Author name="Vo Manh Kien" avatar="https://static.vomanhkien.com/files/20200924102140/kien-vo-e1600923028433.jpg" />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 1,
+    };
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <p>Count: {this.state.count}</p>
+        <button
+          onClick={() => {
+            this.setState({
+              count: this.state.count + 1,
+            });
+          }}
+        >
+          Thêm 1
+        </button>
+        <button
+          onClick={() => {
+            this.setState((state) => {
+              return {
+                count: state.count - 2,
+              };
+            });
+          }}
+        >
+          Bớt 2
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
